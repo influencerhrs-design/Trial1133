@@ -318,3 +318,140 @@ footer p {
     margin-top: 10px;
     font-size: 0.85em;
 }
+/* Custom Properties for easy color change */
+:root {
+    --color-primary: #FFD833; /* Yellow */
+    --color-text-dark: #111111; /* Near Black */
+    --color-background-light: #F9F9F9; /* Off White */
+    --color-white: #FFFFFF;
+    /* Updated colors for the dark link-style footer */
+    --color-footer-bg: #111111; /* Darker than previous */
+    --color-footer-text: #E0E0E0; /* Lighter for contrast */
+    --color-divider: #333333; /* For section lines */
+    --font-primary: 'Arial', sans-serif;
+}
+
+/* ... (Previous header and hero CSS remains the same) ... */
+
+
+/* --- UPDATED PROFESSIONAL DARK FOOTER STYLING --- */
+
+.dark-footer {
+    /* Background matches the look of the reference image */
+    background-color: var(--color-footer-bg); 
+    color: var(--color-footer-text);
+    padding: 40px 20px 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding-bottom: 30px;
+}
+
+.footer-col h3 {
+    color: var(--color-white);
+    font-size: 1.1em;
+    /* Spacing adjusted for the stacked link style */
+    margin-bottom: 5px; 
+    padding: 10px 0;
+    font-weight: bold;
+}
+.mt-20 {
+    margin-top: 20px;
+}
+
+/* ------------------------------------------------ */
+/* STYLING THE LINKS TO LOOK LIKE THE MOBILE MENU   */
+/* ------------------------------------------------ */
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    /* Adding padding to make rows thick like in the image */
+    padding: 10px 0;
+    /* Adding a bottom line for separation */
+    border-bottom: 1px solid var(--color-divider); 
+}
+
+.footer-col ul li:last-child {
+    border-bottom: none;
+}
+
+.footer-col ul li a {
+    color: var(--color-footer-text);
+    text-decoration: none;
+    font-size: 1em;
+    display: flex; /* Allows positioning of the arrow */
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0; /* Padding inside the list item */
+}
+
+/* Adding the right-facing arrow (>) using ::after pseudo-element */
+.footer-col ul li a::after {
+    content: '▶'; /* Unicode for black right-pointing pointer */
+    font-size: 0.7em;
+    color: var(--color-divider);
+    margin-left: 10px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.footer-col ul li a:hover {
+    color: var(--color-primary);
+}
+
+.footer-col ul li a:hover::after {
+    color: var(--color-primary);
+    transform: translateX(3px);
+}
+
+/* Subscribe Section Styling (Updated to Dark Theme) */
+.subscribe-form input[type="email"] {
+    background-color: #222; /* Darker input field */
+    border: 1px solid #444;
+}
+
+.btn-subscribe {
+    background-color: var(--color-primary); /* Using yellow for primary CTA */
+    color: var(--color-text-dark);
+}
+
+.btn-subscribe:hover {
+    background-color: #FFC000;
+}
+
+
+/* Social Icons (Updated to fit dark theme) */
+.social-icons a {
+    color: var(--color-footer-text);
+    font-size: 1.8em;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--color-primary);
+}
+
+/* Disclaimer Section */
+.footer-disclaimer hr {
+    background-color: var(--color-divider);
+}
+
+/* Media Query for Responsiveness */
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr; /* Stack all columns vertically on mobile */
+    }
+    
+    /* On mobile, we might want stronger separation between columns/sections */
+    .footer-col:not(:last-child) {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--color-divider);
+    }
+}
