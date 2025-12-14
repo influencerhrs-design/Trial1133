@@ -2,8 +2,10 @@
 :root {
     --color-primary: #FFD833; /* Yellow */
     --color-text-dark: #111111; /* Near Black */
-    --color-background-light: #F9F9F9; /* Off White */
-    --color-white: #FFFFFF;
+    --color-background-dark: #111111; /* Global Dark Background */
+    --color-background-section: #1A1A1A; /* Slightly lighter dark for contrast sections */
+    --color-text-light: #F9F9F9; /* Off White for text */
+    --color-divider: #333333; /* For section lines */
     --font-primary: 'Arial', sans-serif;
 }
 
@@ -13,11 +15,11 @@
     padding: 0;
 }
 
-body {
+body.dark-theme { /* Apply dark theme globally */
     font-family: var(--font-primary);
     line-height: 1.6;
-    color: var(--color-text-dark);
-    background-color: var(--color-background-light);
+    color: var(--color-text-light);
+    background-color: var(--color-background-dark);
 }
 
 .container {
@@ -26,14 +28,195 @@ body {
     padding: 0 20px;
 }
 
-/* --- Header & Navigation --- */
+/* --- Header & Navigation (Modern Dark Look) --- */
 header {
-    background: var(--color-white);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    background: var(--color-background-dark);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     padding: 15px 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid var(--color-divider);
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.logo-hrs {
+    color: var(--color-text-light);
+}
+
+.logo-jobs {
+    color: var(--color-primary);
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--color-text-light);
+    margin-left: 25px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--color-primary);
+}
+
+/* --- Buttons --- */
+.btn-primary, .btn-secondary {
+    padding: 10px 20px;
+    border-radius: 4px; /* Slightly sharper edges for modern feel */
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    border: 2px solid transparent;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-text-dark);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-text-dark);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.btn-secondary {
+    background-color: var(--color-primary);
+    color: var(--color-text-dark);
+    border: 2px solid var(--color-primary);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-background-dark);
+    color: var(--color-primary);
+}
+
+
+/* --- Hero Section --- */
+.hero-section {
+    background-color: var(--color-background-dark);
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 3.5em; /* Bigger, bolder text */
+    margin-bottom: 15px;
+    color: var(--color-white);
+}
+
+.hero-section p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    color: #AAAAAA;
+}
+
+.search-bar {
+    background: var(--color-background-section);
+    border: 1px solid var(--color-divider);
+    border-radius: 8px;
+}
+
+.search-bar input {
+    background: transparent;
+    color: var(--color-text-light);
+}
+
+.search-bar button {
+    background-color: var(--color-primary);
+    color: var(--color-text-dark);
+}
+
+
+/* --- Job Listings Section (Modern Dark Cards) --- */
+.job-listings {
+    background-color: var(--color-background-section); /* Use slightly lighter dark for contrast */
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.job-listings h2 {
+    color: var(--color-white);
+}
+
+/* Job Card Styling */
+.job-card {
+    background: var(--color-background-dark);
+    border: 1px solid var(--color-divider);
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.job-card:hover {
+    /* Subtle glow effect on hover */
+    box-shadow: 0 0 15px rgba(255, 216, 51, 0.3);
+    border-color: var(--color-primary);
+    transform: none; /* Keep it flat and modern */
+}
+
+.job-card h3 {
+    color: var(--color-white);
+}
+
+.job-card .company-name {
+    color: #AAAAAA;
+}
+
+.meta-tag {
+    background-color: #222222; /* Dark tags */
+    color: #CCCCCC;
+}
+
+.salary-tag {
+    background-color: var(--color-primary);
+    color: var(--color-text-dark);
+    font-weight: 700;
+}
+
+.apply-link a {
+    color: var(--color-primary);
+}
+
+.apply-link a:hover {
+    color: var(--color-white);
+}
+
+.no-jobs {
+    color: #AAAAAA;
+}
+
+/* --- Recruiters Section --- */
+.recruiters-section {
+    background-color: var(--color-background-dark);
+    padding: 60px 20px;
+}
+
+.recruiters-section h2 {
+    color: var(--color-primary);
+}
+
+.recruiters-section p {
+    color: var(--color-text-light);
+}
+
+
+/* --- Footer (Existing Dark Link Style CSS is reused/integrated) --- */
+
+.dark-footer {
+    background-color: var(--color-background-dark); /* Ensure footer is the primary dark color */
+    color: var(--color-footer-text);
+    padding: 40px 20px 20px;
+    border-top: 1px solid var(--color-divider);
+}
+/* ... (Rest of the footer CSS from the previous step remains effective) ... */
 }
 
 .logo {
