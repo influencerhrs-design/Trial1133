@@ -3,416 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hrs.jobs | 100% Free Job Posting, Search & Remote Job Board - Top Job Vacancies</title>
-    <meta name="description" content="hrs.jobs is a 100% free job board. Find top job vacancies, remote jobs, and entry-level positions without the hassle. Recruiters post jobs for free!">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>hrs.jobs | 100% Free Job Board Siliguri & Remote</title>
+    <meta name="description" content="Find top job vacancies in Siliguri and Remote roles. hrs.jobs is a 100% free job posting platform for recruiters and talent.">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="dark-theme"> 
+<body>
 
-    <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="w3_close()">&times;</a>
-        
-        <h3 class="sidebar-heading">Navigation</h3>
-        <a href="#jobs" class="sidebar-item" onclick="w3_close()">Job Listings</a>
-        <a href="#recruiters" class="sidebar-item" onclick="w3_close()">For Recruiters</a>
-        <a href="about.html" class="sidebar-item" onclick="w3_close()">About Us</a>
-        <a href="contact.html" class="sidebar-item" onclick="w3_close()">Contact</a>
-        
-        <a href="mailto:hrs.team.a@gmail.com" class="sidebar-item btn-sidebar-cta" onclick="w3_close()">Post a Job (Free)</a>
+    <header class="main-header">
+        <div class="logo-container">
+            <img src="https://i.ibb.co/zTmDxMBK/android-chrome-512x512.png" alt="hrs.jobs logo" class="site-logo">
+            <span class="logo-text">hrs.jobs</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#jobs">Find Jobs</a>
+            <a href="#recruiters">Hire Staff</a>
+            <a href="mailto:hrs.team.a@gmail.com" class="cta-pill">Post Free →</a>
+        </nav>
+    </header>
 
-        <h3 class="sidebar-heading mt-20">Resources</h3>
-        <a href="faqs.html" class="sidebar-item" onclick="w3_close()">FAQs</a>
-        <a href="#" class="sidebar-item" onclick="w3_close()">Privacy Policy</a>
-        <a href="#" class="sidebar-item" onclick="w3_close()">Terms of Service</a>
-    </div>
-
-    <div id="main-content" class="main-content">
-        
-        <header>
-            <div class="logo">
-                <span class="logo-hrs">hrs.</span><span class="logo-jobs">jobs</span>
-            </div>
-            <nav class="desktop-nav">
-                <a href="#jobs">Jobs</a>
-                <a href="#recruiters">For Recruiters</a>
-                <a href="mailto:hrs.team.a@gmail.com" class="btn-primary">Post a Job (Free)</a>
-            </nav>
-            <button class="openbtn" id="openNav" onclick="w3_open()">&#9776;</button>
-        </header>
-
-        <section class="hero-section">
-            <h1>Find Your Next Great Opportunity: Top Job Vacancies & Remote Jobs</h1>
-            <p>hrs.jobs is the **100% Free Job Board** connecting top talent with companies. Start your **Job Search** today!</p>
-            <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Search Job Vacancies by title, company, or Remote Job keyword...">
-                <button onclick="filterJobs()">Search</button>
+    <main>
+        <section class="hero">
+            <h1 class="aggressive-title">STOP SEARCHING.<br><span class="highlight">START WORKING.</span></h1>
+            <p class="hero-subtext">The Siliguri job market is messy. We made it simple. 100% Free. No Bullsh*t.</p>
+            
+            <div class="search-container">
+                <input type="text" id="jobSearch" placeholder="Role (e.g. Designer, Sales, Remote)...">
+                <button class="search-btn">SEARCH JOBS</button>
             </div>
         </section>
 
-        <section id="jobs" class="job-listings">
-            <h2>Latest Job Openings</h2>
-            <div id="jobContainer" class="job-container"></div>
-            <p class="no-jobs" id="noJobsMessage" style="display:none;">No jobs match your search. Try a different keyword!</p>
-        </section>
-
-        <section id="recruiters" class="recruiters-section">
-            <div class="container">
-                <h2>Free Job Posting for Recruiters: Hiring Made Simple.</h2>
-                <p>Post your job to a global talent pool without any subscription or fee. We keep the process simple and focused.</p>
-                <a href="mailto:hrs.team.a@gmail.com?subject=JOB%20POSTING%20REQUEST%20|%20[Company%20Name]%20|%20[Job%20Title]" class="btn-secondary">
-                    Email Your 100% Free Job Posting Request
-                </a>
-                <p class="small-text">Send details to: **hrs.team.a@gmail.com**</p>
+        <section id="jobs" class="job-board">
+            <div class="section-header">
+                <h2>LATEST VACANCIES</h2>
+                <span class="status-tag">Updated Today</span>
             </div>
-        </section>
 
-        <footer class="dark-footer">
-            <div class="container footer-grid">
-                
-                <div class="footer-col subscribe-section">
-                    <h3>Subscribe to hrs.jobs</h3>
-                    <p>Get the latest job updates weekly!</p>
-                    <form action="#" method="POST" class="subscribe-form">
-                        <input type="email" placeholder="Enter your email" required>
-                        <button type="submit" class="btn-subscribe">SUBSCRIBE</button>
-                    </form>
-                </div>
-
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="faqs.html">FAQs</a></li>
-                        <li><a href="#">Pledge</a></li>
-                        <li><a href="#">Press</a></li>
-                        <li><a href="#">Rate Us</a></li>
-                        <li><a href="#">Wholesale</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h3>For Business</h3>
-                    <ul>
-                        <li><a href="mailto:hrs.team.a@gmail.com">Post a Job (FREE)</a></li>
-                        <li><a href="#">Recruiter Login (Coming Soon)</a></li>
-                        <li><a href="#">Design Agency</a></li>
-                        <li><a href="#">Speaking & Workshops</a></li>
-                    </ul>
-                    <h3 class="mt-20">Content</h3>
-                     <ul>
-                        <li><a href="#">Advice Catalog</a></li>
-                        <li><a href="#">Newsletter</a></li>
-                        <li><a href="#">Podcast (Coming Soon)</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col social-col">
-                    <h3>Follow</h3>
-                    <div class="social-icons">
-                        <a href="[Link to Instagram Profile]" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="[Link to LinkedIn Profile]" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="[Link to WhatsApp Group/Business]" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="[Link to YouTube Channel]" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="mailto:hrs.team.a@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <div id="jobList" class="job-grid">
+                <div class="job-card">
+                    <div class="job-info">
+                        <h3>Full Stack Developer</h3>
+                        <p class="company">Siliguri Tech Solutions</p>
+                        <span class="location">📍 Remote / Siliguri</span>
                     </div>
-                </div>
-                
-            </div>
-            
-            <div class="footer-disclaimer container">
-                <hr>
-                <p>hrs.jobs is a free job posting platform. We only list jobs submitted directly by companies via email and are not affiliated with, nor do we endorse, any specific company listed. All company trademarks and logos are the property of their respective owners.</p>
-            </div>
-        </footer>
-
-    </div> 
-
-    <script src="script.js"></script>
-</body>
-</html>
-                <a href="mailto:hrs.team.a@gmail.com" class="btn-primary">Post a Job (Free)</a>
-            </nav>
-            <button class="openbtn" onclick="w3_open()">&#9776;</button>
-        </header>
-
-        <section class="hero-section">
-            <h1>Find Your Next Great Opportunity.</h1>
-            <p>hrs.jobs connects top talent with companies, completely free for recruiters.</p>
-            <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Search by job title, company, or keyword...">
-                <button onclick="filterJobs()">Search</button>
-            </div>
-        </section>
-
-        <section id="jobs" class="job-listings">
-            <h2>Latest Job Openings</h2>
-            <div id="jobContainer" class="job-container"></div>
-            <p class="no-jobs" id="noJobsMessage" style="display:none;">No jobs match your search. Try a different keyword!</p>
-        </section>
-
-        <section id="recruiters" class="recruiters-section">
-            <div class="container">
-                <h2>Hiring Made Simple and Free.</h2>
-                <p>Post your job to a global talent pool without any subscription or fee. We keep the process simple and focused.</p>
-                <a href="mailto:hrs.team.a@gmail.com?subject=JOB%20POSTING%20REQUEST%20|%20[Company%20Name]%20|%20[Job%20Title]" class="btn-secondary">
-                    Email Your Free Job Posting Request
-                </a>
-                <p class="small-text">Send details to: **hrs.team.a@gmail.com**</p>
-            </div>
-        </section>
-
-        <footer class="dark-footer">
-            <div class="container footer-grid">
-                
-                <div class="footer-col subscribe-section">
-                    <h3>Subscribe to hrs.jobs</h3>
-                    <p>Get the latest job updates weekly!</p>
-                    <form action="#" method="POST" class="subscribe-form">
-                        <input type="email" placeholder="Enter your email" required>
-                        <button type="submit" class="btn-subscribe">SUBSCRIBE</button>
-                    </form>
+                    <a href="#" class="apply-btn">VIEW DETAILS</a>
                 </div>
 
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h3>For Recruiters</h3>
-                    <ul>
-                        <li><a href="mailto:hrs.team.a@gmail.com">Post a Job (FREE)</a></li>
-                        <li><a href="#">Recruiter Login (Coming Soon)</a></li>
-                        <li><a href="#">Hiring Advice</a></li>
-                    </ul>
-                    <h3 class="mt-20">Job Seeker Content</h3>
-                     <ul>
-                        <li><a href="#">Career Blog</a></li>
-                        <li><a href="#">Interview Tips</a></li>
-                        <li><a href="#">Podcast (Coming Soon)</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col social-col">
-                    <h3>Follow</h3>
-                    <div class="social-icons">
-                        <a href="[Link to Instagram Profile]" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="[Link to LinkedIn Profile]" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="[Link to WhatsApp Group/Business]" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="[Link to YouTube Channel]" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="mailto:hrs.team.a@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <div class="job-card featured">
+                    <div class="job-info">
+                        <h3>Marketing Manager</h3>
+                        <p class="company">Local Retail Group</p>
+                        <span class="location">📍 Siliguri, WB</span>
                     </div>
-                </div>
-                
-            </div>
-            
-            <div class="footer-disclaimer container">
-                <hr>
-                <p>hrs.jobs is a free job posting platform. We only list jobs submitted directly by companies via email and are not affiliated with, nor do we endorse, any specific company listed. All company trademarks and logos are the property of their respective owners.</p>
-            </div>
-        </footer>
-
-    </div> <script src="script.js"></script>
-</body>
-</html>
-        <p class="no-jobs" id="noJobsMessage" style="display:none;">No jobs match your search. Try a different keyword!</p>
-    </section>
-
-    <section id="recruiters" class="recruiters-section">
-        <div class="container">
-            <h2>Hiring Made Simple and Free.</h2>
-            <p>Post your job to a global talent pool without any subscription or fee. We keep the process simple and focused.</p>
-            <a href="mailto:hrs.team.a@gmail.com?subject=JOB%20POSTING%20REQUEST%20|%20[Company%20Name]%20|%20[Job%20Title]" class="btn-secondary">
-                Email Your Free Job Posting Request
-            </a>
-            <p class="small-text">Send details to: **hrs.team.a@gmail.com**</p>
-        </div>
-    </section>
-
-    <footer class="dark-footer">
-        <div class="container footer-grid">
-            
-            <div class="footer-col subscribe-section">
-                <h3>Subscribe to hrs.jobs</h3>
-                <p>Get the latest job updates weekly!</p>
-                <form action="#" method="POST" class="subscribe-form">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit" class="btn-subscribe">SUBSCRIBE</button>
-                </form>
-            </div>
-
-            <div class="footer-col">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms of Service</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h3>For Recruiters</h3>
-                <ul>
-                    <li><a href="mailto:hrs.team.a@gmail.com">Post a Job (FREE)</a></li>
-                    <li><a href="#">Recruiter Login (Coming Soon)</a></li>
-                    <li><a href="#">Hiring Advice</a></li>
-                </ul>
-                <h3 class="mt-20">Job Seeker Content</h3>
-                 <ul>
-                    <li><a href="#">Career Blog</a></li>
-                    <li><a href="#">Interview Tips</a></li>
-                    <li><a href="#">Podcast (Coming Soon)</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col social-col">
-                <h3>Follow</h3>
-                <div class="social-icons">
-                    <a href="[Link to Instagram Profile]" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="[Link to LinkedIn Profile]" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="[Link to WhatsApp Group/Business]" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="[Link to YouTube Channel]" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    <a href="mailto:hrs.team.a@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="#" class="apply-btn">VIEW DETAILS</a>
                 </div>
             </div>
-            
-        </div>
-        
-        <div class="footer-disclaimer container">
-            <hr>
-            <p>hrs.jobs is a free job posting platform. We only list jobs submitted directly by companies via email and are not affiliated with, nor do we endorse, any specific company listed. All company trademarks and logos are the property of their respective owners.</p>
-        </div>
-    </footer>
+        </section>
 
-    <script src="script.js"></script>
-</body>
-</html>
-    </section>
-
-    <section id="recruiters" class="recruiters-section">
-        <div class="container">
-            <h2>Hiring Made Simple and Free.</h2>
-            <p>Post your job to a global talent pool without any subscription or fee. We keep the process simple and focused.</p>
-            <a href="mailto:hrs.team.a@gmail.com?subject=JOB%20POSTING%20REQUEST%20|%20[Company%20Name]%20|%20[Job%20Title]" class="btn-secondary">
-                Email Your Free Job Posting Request
-            </a>
-            <p class="small-text">Send details to: **hrs.team.a@gmail.com**</p>
-        </div>
-    </section>
+        <section id="recruiters" class="recruiter-manifesto">
+            <div class="manifesto-box">
+                <h2>RECRUITERS: STOP PAYING FOR LEADS.</h2>
+                <p>Hire the best talent in West Bengal without spending a single Rupee on job ads.</p>
+                <a href="mailto:hrs.team.a@gmail.com?subject=Post a Job" class="huge-btn">EMAIL YOUR JOB POST NOW</a>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <div class="footer-links">
-            <a href="www.hrs.jobs.xyz" target="_blank">Website Link</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
+        <div class="footer-top">
+            <div class="footer-brand">
+                <h3>hrs.jobs</h3>
+                <p>Built for the Siliguri Digital Economy.</p>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>Navigate</h4>
+                    <a href="#">About</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                </div>
+                <div class="link-group">
+                    <h4>Social</h4>
+                    <a href="#">WhatsApp</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">LinkedIn</a>
+                </div>
+            </div>
         </div>
-        <div class="social-links">
-            <a href="[Link to WhatsApp Group/Business]" target="_blank" aria-label="WhatsApp">📞 WhatsApp</a>
-            <a href="[Link to Instagram Profile]" target="_blank" aria-label="Instagram">📸 Instagram</a>
-            <a href="[Link to YouTube Channel]" target="_blank" aria-label="YouTube">▶️ YouTube</a>
+        <div class="footer-bottom">
+            <p>© 2025 HRS.JOBS | STARK MINIMALISM FOR MAXIMUM RESULTS.</p>
         </div>
-        <p>&copy; 2025 hrs.jobs. All rights reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
 </body>
 </html>
-
-    @layer base {
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            color: var(--text-primary);
-        }
-    }
-
-    @layer components {
-        .btn-primary {
-            @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300;
-            background-color: var(--primary-color);
-            color: white;
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(251, 191, 36, 0.3);
-        }
-        .btn-secondary {
-            @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300 border-2;
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-        }
-        .btn-secondary:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-    }
-    </style>
-    <meta property="og:image" content="https://app.trickle.so/storage/app/IMG_20251013_153632.png">
-    <meta name="twitter:image" content="https://app.trickle.so/storage/app/IMG_20251013_153632.png">
-
-
-
-    <div id="root"></div>
-    <script type="text/babel" src="components/Header.js"></script>
-    <script type="text/babel" src="components/Hero.js"></script>
-    <script type="text/babel" src="components/FeaturedArticles.js"></script>
-    <script type="text/babel" src="components/Footer.js"></script>
-    <script type="text/babel" src="app.js"></script>
-
-
-
-</body>
-
-</html>
-<footer class="dark-footer">
-    <div class="container footer-grid">
-        
-        <div class="footer-col subscribe-section">
-            <h3>Subscribe to hrs.jobs</h3>
-            </div>
-
-        <div class="footer-col">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">FAQs</a></li>
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms of Service</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-col">
-            <h3>For Recruiters</h3>
-            <ul>
-                <li><a href="mailto:hrs.team.a@gmail.com">Post a Job (FREE)</a></li>
-                <li><a href="#">Recruiter Login (Coming Soon)</a></li>
-                <li><a href="#">Hiring Advice</a></li>
-            </ul>
-            <h3 class="mt-20">Job Seeker Content</h3>
-             <ul>
-                <li><a href="#">Career Blog</a></li>
-                <li><a href="#">Interview Tips</a></li>
-                <li><a href="#">Podcast (Coming Soon)</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-col social-col">
-            <h3>Follow</h3>
-            </div>
-        
-    </div>
-    
-    </footer>
