@@ -3,7 +3,8 @@
 $admin_password = "7797"; 
 
 session_start();
-$file = 'jobs.json';
+$job_file = 'jobs.json';
+$blog_file = 'blog.json';
 
 // Handle Logout
 if (isset($_GET['logout'])) {
@@ -21,133 +22,133 @@ if (isset($_POST['login'])) {
     }
 }
 
-// Handle Approval or Deletion (Only if logged in)
+// Security Check
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
-    // Read current jobs
-    if (!file_exists($file)) {
-        file_put_contents($file, json_encode([]));
+    
+    // --- JOB LOGIC ---
+    $jobs = json_decode(file_get_contents($job_file), true) ?: [];
+    if (isset($_GET['approve_job'])) {
+        $jobs[$_GET['approve_job']]['approved'] = true;
+        file_put_contents($job_file, json_encode($jobs, JSON_PRETTY_PRINT));
+        header("Location: admin.php"); exit();
     }
-    $data = json_decode(file_get_contents($file), true) ?: [];
-
-    // Action: Approve
-    if (isset($_GET['approve'])) {
-        $id = $_GET['approve'];
-        if (isset($data[$id])) {
-            $data[$id]['approved'] = true;
-            file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT));
-        }
-        header("Location: admin.php");
-        exit();
+    if (isset($_GET['delete_job'])) {
+        array_splice($jobs, $_GET['delete_job'], 1);
+        file_put_contents($job_file, json_encode($jobs, JSON_PRETTY_PRINT));
+        header("Location: admin.php"); exit();
     }
 
-    // Action: Delete
-    if (isset($_GET['delete'])) {
-        $id = $_GET['delete'];
-        if (isset($data[$id])) {
-            array_splice($data, $id, 1);
-            file_put_contents($file, json_encode($data, JSON_PRETTY_PRINT));
-        }
-        header("Location: admin.php");
-        exit();
+    // --- BLOG LOGIC ---
+    $blogs = json_decode(file_get_contents($blog_file), true) ?: [];
+    if (isset($_POST['add_blog'])) {
+        $new_post = [
+            "title" => $_POST['blog_title'],
+            "date" => date("M d, Y"),
+            "author" => "Admin",
+            "excerpt" => $_POST['blog_excerpt'],
+            "content" => $_POST['blog_content']
+        ];
+        $blogs[] = $new_post;
+        file_put_contents($blog_file, json_encode($blogs, JSON_PRETTY_PRINT));
+        header("Location: admin.php#blog-manager"); exit();
+    }
+    if (isset($_GET['delete_blog'])) {
+        array_splice($blogs, $_GET['delete_blog'], 1);
+        file_put_contents($blog_file, json_encode($blogs, JSON_PRETTY_PRINT));
+        header("Location: admin.php#blog-manager"); exit();
     }
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>Admin Dashboard | JobsPortal</title>
+    <title>Master Admin | JobsPortal</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
     <style>
         body { background-color: #121212; color: white; font-family: "Poppins", sans-serif; }
         .bg-yellow { background-color: #FFD833 !important; color: black !important; }
-        .w3-modal-content { border-radius: 8px; border: 2px solid #FFD833; }
-        .status-pending { color: #FFD833; font-weight: bold; font-size: 0.8em; border: 1px solid #FFD833; padding: 2px 6px; border-radius: 4px; }
-        .status-live { color: #25D366; font-weight: bold; font-size: 0.8em; border: 1px solid #25D366; padding: 2px 6px; border-radius: 4px; }
-        tr:hover { background-color: #1e1e1e; }
-        .w3-table td { vertical-align: middle; }
+        input, textarea { background: #1e1e1e !important; color: white !important; border: 1px solid #333 !important; }
+        .tab-btn { cursor: pointer; padding: 10px 20px; display: inline-block; border-bottom: 2px solid transparent; }
+        .tab-btn.active { border-color: #FFD833; color: #FFD833; }
     </style>
 </head>
-<body class="w3-container">
+<body class="w3-container w3-padding-32">
 
 <?php if (!isset($_SESSION['loggedin'])): ?>
-    <div class="w3-modal" style="display:block; background-color: rgba(0,0,0,0.9);">
-        <div class="w3-modal-content w3-dark-grey w3-padding-32" style="max-width:400px; margin-top:150px;">
-            <div class="w3-container w3-center">
-                <h2 style="color:#FFD833"><b>Admin Panel</b></h2>
-                <p>Enter access code to manage jobs</p>
-                <form method="POST">
-                    <input class="w3-input w3-border w3-margin-bottom w3-center" type="password" name="password" placeholder="****" style="background:#000; color:#FFD833; font-size:24px; letter-spacing: 5px;" required autofocus>
-                    <button type="submit" name="login" class="w3-button w3-block bg-yellow w3-round w3-bold">UNLOCK</button>
-                    <?php if(isset($error)): ?>
-                        <p class="w3-text-red w3-margin-top"><?php echo $error; ?></p>
-                    <?php endif; ?>
-                </form>
-            </div>
+    <div class="w3-modal" style="display:block">
+        <div class="w3-modal-content w3-dark-grey w3-padding-32 w3-center" style="max-width:400px; margin-top:100px; border: 2px solid #FFD833;">
+            <h2 class="theme-yellow">Admin Unlock</h2>
+            <form method="POST">
+                <input class="w3-input w3-border w3-margin-bottom w3-center" type="password" name="password" placeholder="Passcode" required autofocus>
+                <button type="submit" name="login" class="w3-button bg-yellow w3-block">Access Dashboard</button>
+            </form>
         </div>
     </div>
-
 <?php else: ?>
-    <div class="w3-main w3-content" style="max-width:1000px">
-        <header class="w3-padding-48 w3-border-bottom w3-border-dark-grey">
-            <div class="w3-right">
-                <a href="admin.php?logout=1" class="w3-button w3-red w3-small w3-round">Sign Out</a>
-            </div>
-            <h1 class="w3-xxlarge">Jobs<span class="w3-text-yellow">Moderator</span></h1>
-            <p class="w3-opacity">Manage pending and active listings from `jobs.json`</p>
-        </header>
 
-        <div class="w3-responsive w3-margin-top">
-            <table class="w3-table w3-bordered w3-border-dark-grey">
-                <tr style="background:#1e1e1e">
-                    <th>Job Info</th>
-                    <th>Contact</th>
-                    <th>Status</th>
-                    <th class="w3-center">Actions</th>
-                </tr>
-                <?php if (empty($data)): ?>
-                    <tr><td colspan="4" class="w3-center w3-padding-64 w3-opacity">No data found in jobs.json</td></tr>
-                <?php else: ?>
-                    <?php foreach ($data as $index => $job): ?>
-                    <tr>
-                        <td>
-                            <b><?php echo htmlspecialchars($job['title']); ?></b><br>
-                            <small class="w3-text-grey"><?php echo htmlspecialchars($job['company']); ?> | <?php echo htmlspecialchars($job['location']); ?></small>
-                        </td>
-                        <td>
-                            <small><?php echo htmlspecialchars($job['company_email']); ?><br>
-                            WA: <?php echo htmlspecialchars($job['whatsapp']); ?></small>
-                        </td>
-                        <td>
-                            <?php if($job['approved']): ?>
-                                <span class="status-live">LIVE</span>
-                            <?php else: ?>
-                                <span class="status-pending">PENDING</span>
-                            <?php endif; ?>
-                        </td>
-                        <td class="w3-center">
-                            <div class="w3-bar">
-                                <?php if(!$job['approved']): ?>
-                                    <a href="admin.php?approve=<?php echo $index; ?>" class="w3-button w3-green w3-tiny w3-round">Approve</a>
-                                <?php endif; ?>
-                                <a href="admin.php?delete=<?php echo $index; ?>" class="w3-button w3-red w3-tiny w3-round" onclick="return confirm('Permanently delete this job?')">Delete</a>
-                            </div>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            </table>
-        </div>
-        
-        <footer class="w3-padding-32 w3-center w3-opacity">
-            <p>Direct JSON Editor v1.0</p>
-            <a href="index.html" class="w3-text-yellow">View Live Site</a>
-        </footer>
+    <header class="w3-padding-16 w3-border-bottom w3-border-dark-grey">
+        <a href="admin.php?logout=1" class="w3-right w3-button w3-red w3-round">Logout</a>
+        <h1 class="w3-xlarge">Master <span class="w3-text-yellow">Dashboard</span></h1>
+    </header>
+
+    <div class="w3-margin-top">
+        <div class="tab-btn active" onclick="openTab('jobs')">Manage Jobs</div>
+        <div class="tab-btn" onclick="openTab('blog')">Manage Blog</div>
     </div>
+
+    <div id="jobs" class="tab-content w3-margin-top">
+        <h3>Pending & Active Jobs</h3>
+        <table class="w3-table w3-bordered w3-border-dark-grey">
+            <tr class="w3-dark-grey"><th>Job/Company</th><th>Status</th><th>Actions</th></tr>
+            <?php foreach($jobs as $idx => $j): ?>
+            <tr>
+                <td><b><?= $j['title'] ?></b><br><small><?= $j['company'] ?></small></td>
+                <td><?= $j['approved'] ? '<span class="w3-text-green">LIVE</span>' : '<span class="w3-text-yellow">PENDING</span>' ?></td>
+                <td>
+                    <?php if(!$j['approved']): ?> <a href="admin.php?approve_job=<?= $idx ?>" class="w3-button w3-green w3-tiny">Approve</a> <?php endif; ?>
+                    <a href="admin.php?delete_job=<?= $idx ?>" class="w3-button w3-red w3-tiny">Delete</a>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
+
+    <div id="blog" class="tab-content w3-margin-top" style="display:none">
+        <h3>Post New Blog Article</h3>
+        <form method="POST" class="w3-container w3-padding w3-card-4 w3-dark-grey">
+            <label>Title</label><input class="w3-input" name="blog_title" required>
+            <label>Short Excerpt (Intro)</label><input class="w3-input" name="blog_excerpt" required>
+            <label>Full Content</label><textarea class="w3-input" name="blog_content" rows="5" required></textarea>
+            <button type="submit" name="add_blog" class="w3-button bg-yellow w3-margin-top">Publish Article</button>
+        </form>
+
+        <h3 class="w3-margin-top">Existing Posts</h3>
+        <table class="w3-table w3-bordered w3-border-dark-grey">
+            <?php foreach($blogs as $idx => $b): ?>
+            <tr>
+                <td><b><?= $b['title'] ?></b><br><small><?= $b['date'] ?></small></td>
+                <td><a href="admin.php?delete_blog=<?= $idx ?>" class="w3-button w3-red w3-tiny">Remove</a></td>
+            </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
+
 <?php endif; ?>
 
+<script>
+function openTab(name) {
+    var i;
+    var x = document.getElementsByClassName("tab-content");
+    for (i = 0; i < x.length; i++) { x[i].style.display = "none"; }
+    document.getElementById(name).style.display = "block";
+    
+    var buttons = document.getElementsByClassName("tab-btn");
+    for (i = 0; i < buttons.length; i++) { buttons[i].className = buttons[i].className.replace(" active", ""); }
+    event.currentTarget.className += " active";
+}
+</script>
 </body>
 </html>
