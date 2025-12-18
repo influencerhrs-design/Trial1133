@@ -3,117 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post a Free Job | hrs.jobs portal</title>
-    <meta name="description" content="Submit your job vacancies for free on hrs.jobs. Reach top talent instantly through our direct WhatsApp and Email portal.">
+    <title>Post a Job | hrs.jobs</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        /* Small Code - Minimalist Row Style */
+        .form-row {
+            border-bottom: 1px solid #333;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .form-row label {
+            color: #FFD833;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .form-row input, .form-row textarea, .form-row select {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.1em;
+            outline: none;
+            width: 100%;
+        }
+        .form-row input::placeholder { color: #555; }
+        
+        /* The Submit Arrow Link style you liked */
+        .submit-area {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .btn-submit-link {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 0;
+        }
+        .btn-submit-link:hover { color: #FFD833; }
+        .arrow-icon { color: #FFD833; }
+    </style>
 </head>
 <body class="dark-theme">
 
-    <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="w3_close()">&times;</a>
-        <h3 class="sidebar-heading">Navigation</h3>
-        <a href="index.html" class="sidebar-item" onclick="w3_close()">Home</a>
-        <a href="index.html#jobs" class="sidebar-item" onclick="w3_close()">Browse Jobs</a>
-        <a href="about.html" class="sidebar-item" onclick="w3_close()">About Us</a>
-        <a href="contact.html" class="sidebar-item" onclick="w3_close()">Contact</a>
-        <h3 class="sidebar-heading mt-20">Resources</h3>
-        <a href="faqs.html" class="sidebar-item" onclick="w3_close()">FAQs</a>
-    </div>
-
     <div id="main-content" class="main-content">
-        
         <header>
             <div class="header-left">
-                <button class="openbtn" id="openNav" onclick="w3_open()">&#9776;</button>
-                <div class="logo">
+                <a href="index.html" style="text-decoration:none; color:white;">
                     <span class="logo-hrs">hrs.</span><span class="logo-jobs">jobs portal</span>
-                </div>
+                </a>
             </div>
-            <div class="header-right"></div>
         </header>
 
-        <section class="page-content container">
-            <h1 class="page-title">Post Your <span style="color: var(--color-primary);">Free Job.</span></h1>
-            
-            <div class="content-block" style="max-width: 700px; margin: 0 auto;">
-                <p style="text-align: center; color: #888; margin-bottom: 30px;">
-                    Fill out the details below. Your request will be sent to our team for manual review and approval within 24 hours.
-                </p>
+        <section class="container" style="padding-top: 60px; padding-bottom: 100px;">
+            <h1 style="font-size: 3em; margin-bottom: 10px;">Post <span style="color:#FFD833;">Job.</span></h1>
+            <p style="color: #888; margin-bottom: 40px;">100% Free Recruitment. No accounts needed.</p>
 
-                <form action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
-                    <div style="margin-bottom: 20px;">
-                        <label style="display: block; margin-bottom: 8px;">Company Name</label>
-                        <input type="text" name="Company_Name" required placeholder="e.g. hrsdesign" 
-                               style="width: 100%; padding: 12px; background: #111; border: 1px solid #333; color: white; border-radius: 4px;">
-                    </div>
+            <form action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
+                
+                <div class="form-row">
+                    <label>Company</label>
+                    <input type="text" name="company" placeholder="Name of your brand" required>
+                </div>
 
-                    <div style="margin-bottom: 20px;">
-                        <label style="display: block; margin-bottom: 8px;">Job Title</label>
-                        <input type="text" name="Job_Title" required placeholder="e.g. Senior Web Designer" 
-                               style="width: 100%; padding: 12px; background: #111; border: 1px solid #333; color: white; border-radius: 4px;">
-                    </div>
+                <div class="form-row">
+                    <label>Job Title</label>
+                    <input type="text" name="title" placeholder="Position name" required>
+                </div>
 
-                    <div style="display: flex; gap: 20px; margin-bottom: 20px;">
-                        <div style="flex: 1;">
-                            <label style="display: block; margin-bottom: 8px;">Location</label>
-                            <input type="text" name="Location" required placeholder="e.g. Remote / Mumbai" 
-                                   style="width: 100%; padding: 12px; background: #111; border: 1px solid #333; color: white; border-radius: 4px;">
-                        </div>
-                        <div style="flex: 1;">
-                            <label style="display: block; margin-bottom: 8px;">Experience</label>
-                            <select name="Experience" style="width: 100%; padding: 12px; background: #111; border: 1px solid #333; color: white; border-radius: 4px;">
-                                <option>Fresher</option>
-                                <option>1-3 Years</option>
-                                <option>3-5 Years</option>
-                                <option>5+ Years</option>
-                            </select>
-                        </div>
-                    </div>
+                <div class="form-row">
+                    <label>WhatsApp / Mobile</label>
+                    <input type="text" name="whatsapp" placeholder="Include country code" required>
+                </div>
 
-                    <div style="margin-bottom: 20px;">
-                        <label style="display: block; margin-bottom: 8px;">Recruiter WhatsApp (with country code)</label>
-                        <input type="text" name="WhatsApp_Number" required placeholder="e.g. 91..." 
-                               style="width: 100%; padding: 12px; background: #111; border: 1px solid #333; color: white; border-radius: 4px;">
-                    </div>
+                <div class="form-row">
+                    <label>Email Address</label>
+                    <input type="email" name="email" placeholder="Recruiter email" required>
+                </div>
 
-                    <div style="margin-bottom: 20px;">
-                        <label style="display: block; margin-bottom: 8px;">Job Description</label>
-                        <textarea name="Description" rows="6" required placeholder="Describe the role, salary, and requirements..." 
-                                  style="width: 100%; padding: 12px; background: #111; border: 1px solid #333; color: white; border-radius: 4px; resize: vertical;"></textarea>
-                    </div>
+                <div class="form-row">
+                    <label>Description</label>
+                    <textarea name="description" rows="3" placeholder="Briefly explain the role..." required></textarea>
+                </div>
 
-                    <button type="submit" class="btn-primary" style="width: 100%; padding: 15px; font-size: 1.1em; text-transform: uppercase;">
-                        Submit for Review
+                <div class="submit-area">
+                    <button type="submit" class="btn-submit-link">
+                        CONFIRM SUBMISSION <span class="arrow-icon">▶</span>
                     </button>
-                </form>
-            </div>
+                </div>
+
+            </form>
         </section>
 
         <footer class="dark-footer">
             <div class="container footer-grid">
                 <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="faqs.html">FAQs</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col social-col">
-                    <h3>Connect With Us</h3>
-                    <div class="social-icons">
-                        <a href="https://whatsapp.com/channel/0029VbCo9qP89inbptasmC20" target="_blank" aria-label="WhatsApp channel"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.instagram.com/hrsjobs.xyz?igsh=bnZxbndmbHpleW5q" target="_blank" aria-label="Instagram profile"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/company/human-resource-support/" target="_blank" aria-label="LinkedIn page"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://youtube.com/@humanresourcesupport?si=3UcRLQYKoDOFPBKS" target="_blank" aria-label="YouTube channel"><i class="fab fa-youtube"></i></a>
-                    </div>
+                   <p style="font-size: 0.8em; color: #555;">© 2025 hrs.jobs | Powered by hrsdesign</p>
                 </div>
             </div>
         </footer>
     </div>
 
-    <script src="script.js"></script>
 </body>
 </html>
