@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     file_put_contents($file, json_encode($currentData, JSON_PRETTY_PRINT));
 
     // Admin Notification
-    $to = "raf@gmail.com";
+    $to = "hrs.team.a@gmail.com";
     $subject = "New Job Review Needed";
     $body = "A new job has been submitted for " . $_POST['title'] . ". Check jobs.json to approve.";
     mail($to, $subject, $body);
