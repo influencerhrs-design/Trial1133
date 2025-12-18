@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>hrsjobs | Direct Connect</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    body,h1,h2,h3,h4,h5 {font-family: "Poppins", sans-serif}
+    body {font-size:16px; background-color: #121212; color: white;}
+    
+    /* Branding Colors */
+    .theme-yellow { color: #FFD833 !important; }
+    .bg-yellow { background-color: #FFD833 !important; color: black !important; }
+    .w3-sidebar { background-color: #FFD833 !important; color: black !important; font-weight:bold; }
+    
+    /* Job Card Design */
+    .job-card { background-color: #1e1e1e; border: 1px solid #333; margin-bottom: 24px; border-radius: 12px; transition: 0.3s; }
+    .job-card:hover { border-color: #FFD833; }
+    .apply-wa { background-color: #25D366; color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px; display: inline-block; font-weight: bold; }
+    .apply-mail { background-color: #ffffff; color: #000; padding: 10px 20px; text-decoration: none; border-radius: 6px; display: inline-block; margin-right: 10px; font-weight: bold; }
+    
+    .social-icons i { margin: 0 10px; cursor: pointer; transition: 0.3s; }
+    .social-icons i:hover { color: white; }
+</style>
+</head>
+<body>
+
+<nav class="w3-sidebar w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;" id="mySidebar"><br>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+  <div class="w3-container">
+    <h3 class="w3-padding-64"><b>Jobs<br>Portal</b></h3>
+  </div>
+  <div class="w3-bar-block">
+    <a href="#" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Home</a> 
+    <a href="#jobs" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Browse Jobs</a> 
+    <a href="post-job.html" class="w3-bar-item w3-button w3-hover-white">Post a Job</a> 
+    <a href="services.html" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Services</a> 
+    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">Contact</a>
+    <hr>
+    <a href="admin.php" class="w3-bar-item w3-button w3-hover-white w3-small w3-opacity">Admin Login</a>
+  </div>
+</nav>
+
+<header class="w3-container w3-top w3-hide-large bg-yellow w3-xlarge w3-padding">
+  <a href="javascript:void(0)" class="w3-button bg-yellow w3-margin-right" onclick="w3_open()">☰</a>
+  <span>JobsPortal</span>
+</header>
+
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+  <div class="w3-container" style="margin-top:80px" id="jobs">
+    <h1 class="w3-jumbo"><b>Find Your Job</b></h1>
+    <h1 class="w3-xxxlarge theme-yellow"><b>Direct Connections.</b></h1>
+    <hr style="width:50px;border:5px solid #FFD833" class="w3-round">
+  </div>
+  
+  <div class="w3-container" id="job-list-container">
+      <p class="w3-opacity">Scanning for active opportunities...</p>
+  </div>
+
+  <div class="w3-container" id="services" style="margin-top:75px">
+    <h1 class="w3-xxxlarge theme-yellow"><b>Services.</b></h1>
+    <hr style="width:50px;border:5px solid #FFD833" class="w3-round">
+    <p>We bridge the gap between local companies and talent using the world's most accessible tools: <b>WhatsApp</b> and <b>Email</b>.</p>
+    <p>No more complex application forms. No more waiting for weeks. Apply directly to decision-makers in one click.</p>
+  </div>
+
+  <div class="w3-container" id="contact" style="margin-top:75px">
+    <h1 class="w3-xxxlarge theme-yellow"><b>Contact.</b></h1>
+    <hr style="width:50px;border:5px solid #FFD833" class="w3-round">
+    <p>Questions? Fill out the form below to reach the support team.</p>
+    <form action="mailto:raf@gmail.com" method="post" enctype="text/plain">
+      <div class="w3-section">
+        <label>Name</label>
+        <input class="w3-input w3-border" style="background:#1e1e1e; color:white" type="text" name="Name" required>
+      </div>
+      <div class="w3-section">
+        <label>Message</label>
+        <textarea class="w3-input w3-border" style="background:#1e1e1e; color:white" name="Message" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="w3-button w3-block w3-padding-large bg-yellow w3-margin-bottom w3-round">Send Message</button>
+    </form>  
+  </div>
+
+  <footer class="w3-container w3-padding-64 w3-center w3-opacity" style="background-color: #000; color: white; margin-top: 50px; border-radius: 12px 12px 0 0;">  
+    <div class="w3-xlarge w3-padding-32 social-icons">
+      <a href="https://facebook.com" target="_blank" class="theme-yellow"><i class="fa fa-facebook-official"></i></a>
+      <a href="https://instagram.com" target="https://www.instagram.com/hrsjobs.xyz?igsh=bnZxbndmbHpleW5q" class="theme-yellow"><i class="fa fa-instagram"></i></a>
+      <a href="https://linkedin.com" target="_blank" class="theme-yellow"><i class="fa fa-linkedin"></i></a>
+      <a href="https://youtube.com" target="_blank" class="theme-yellow"><i class="fa fa-youtube-play"></i></a>
+      <a href="https://wa.me/YOUR_PHONE" target="_blank" class="theme-yellow"><i class="fa fa-whatsapp"></i></a>
+    </div>
+    <p>© 2025 JobsPortal | <a href="terms.html" class="theme-yellow">Terms</a> | <a href="privacy.html" class="theme-yellow">Privacy</a></p>
+  </footer>
+
+</div>
+
+<script>
+// Sidebar Toggle Logic
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Fetch Jobs from JSON
+fetch('jobs.json')
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById('job-list-container');
+    container.innerHTML = "";
+    
+    // Show only approved jobs
+    const activeJobs = data.filter(job => job.approved === true);
+
+    if(activeJobs.length === 0) {
+        container.innerHTML = "<div class='w3-panel w3-border w3-border-dark-grey w3-padding-32 w3-center'><p class='w3-opacity'>No jobs live at the moment. Check back soon!</p></div>";
+        return;
+    }
+
+    activeJobs.forEach(job => {
+      container.innerHTML += `
+        <div class="w3-container job-card w3-padding-24 w3-animate-opacity">
+          <h2 class="theme-yellow w3-xlarge"><b>${job.title}</b></h2>
+          <p class="w3-opacity">🏢 ${job.company} | 📍 ${job.location}</p>
+          <p style="color:#bbb">${job.description}</p>
+          <p class="w3-small"><i class="fa fa-calendar"></i> Apply before: ${job.deadline}</p>
+          <div class="w3-padding-16">
+            <a href="mailto:${job.company_email}?subject=Application for ${job.title}" class="apply-mail">Email CV</a>
+            <a href="https://wa.me/${job.whatsapp}?text=Hi, I am interested in the ${job.title} position." target="_blank" class="apply-wa"><i class="fa fa-whatsapp"></i> WhatsApp Apply</a>
+          </div>
+        </div>
+      `;
+    });
+  })
+  .catch(err => {
+      document.getElementById('job-list-container').innerHTML = "<p class='w3-text-red'>Error connecting to job database.</p>";
+  });
+</script>
+
+</body>
+  </html>
